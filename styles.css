@@ -1,0 +1,83 @@
+body {
+
+    word-wrap:wrap;
+
+    width:100vw;
+
+    
+
+}
+
+#inpDiv{
+
+    position:fixed;
+
+    bottom:10px;
+
+    width:100%;
+
+    padding:5px;
+
+}
+
+#inpText{
+
+    width:80%;
+
+    height:30px;
+
+}
+
+.textBox{
+
+    width:100vw;
+
+    overflow-x:hidden;
+
+}
+
+#msg{
+
+    padding-bottom:60px;
+
+    
+
+}
+
+#imgNew{
+
+    width:90%;
+
+    
+
+}
+
+.main{
+
+    margin-bottom:30px;
+
+    background:linear-gradient(50deg, white, grey);
+
+    border-radius:10px;
+
+    box-shadow:2px 3px 7px black;
+
+    padding:5px;
+
+    overflow:hidden;
+
+}
+
+iframe{
+
+    height:100vh;
+
+    width:100%;
+
+}
+
+video{
+
+    width:100%;
+
+}
