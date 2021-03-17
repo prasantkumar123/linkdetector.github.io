@@ -1,0 +1,267 @@
+<!--  
+
+You can detect any type of image/ audio/ video from a text and show those elements accordingly...
+
+❤️ Paste any image/ audio/ video/ website link in the input field along with other texts... 
+
+❤️ You can paste multiple links of same type i.e. only images or only videos etc...
+
+❤️ After clicking send button, it will show you the texts along with the images/ audio/ video/ website whose link you had pasted
+
+❤️❤️ I have not made it more beautiful as my exam is ahead ( 26th feb 😭😭😭 )
+
+-->
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <title>url detector</title>
+
+        <div id="msg"></div>
+
+       <div id="inpDiv">
+
+            <input type="text" id="inpText" placeholder="https://...">
+
+        <button id="sendBtn" onclick="send()">Send</button>
+
+       </div>
+
+    </head>
+
+    <body>
+
+        <script>
+
+        var txt = "hi I am   Prasant";
+
+        var spc = "" || " " || "   ";
+
+         // console.log(txt.trim().split(spc));
+
+    
+
+    function id(x){
+
+        return document.getElementById(x);
+
+    }
+
+    
+
+    
+
+ function send(){
+
+     //console.log("snd");
+
+     var inpText = id("inpText").value;
+
+     //console.log(inpText);
+
+     
+
+    // var inpArr = inpText.trim().split(spc);
+
+     //console.log(inpArr)
+
+     
+
+     
+
+       if( inpText.includes("https://") || inpText.includes("http://") ){
+
+            if(inpText.includes("jpg") || inpText.includes("png") || inpText.includes("gif") ){
+
+                var div = document.createElement("div");
+
+            
+
+            
+
+            div.innerHTML = `
+
+            <div class="main">
+
+                ${linkImg(inpText)}
+
+            `;
+
+         id("msg").appendChild(div);
+
+            }else if(inpText.includes("mp3") ){
+
+                var div = document.createElement("div");
+
+            
+
+            
+
+            div.innerHTML = `
+
+            <div class="main">
+
+                ${linkAud(inpText)}
+
+            `;
+
+         id("msg").appendChild(div);
+
+            }else if(inpText.includes("mp4") ){
+
+                var div = document.createElement("div");
+
+            
+
+            
+
+            div.innerHTML = `
+
+            <div class="main">
+
+                ${linkVid(inpText)}
+
+            `;
+
+         id("msg").appendChild(div);
+
+            }else{
+
+                var div = document.createElement("div");
+
+            
+
+            
+
+            div.innerHTML = `
+
+            <div class="main">
+
+                ${linkWeb(inpText)}
+
+            `;
+
+         id("msg").appendChild(div);
+
+            }
+
+         
+
+         }else{
+
+             var div = document.createElement("div");
+
+            div.innerHTML = `
+
+            <div class="main">
+
+                <p class="textBox">${inpText}</p>
+
+            </div>
+
+            
+
+            `;
+
+        id("msg").appendChild(div);
+
+        
+
+         }
+
+         id("inpText").value = "";
+
+     }
+
+     
+
+ function linkImg(text) {
+
+    var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+
+    
+
+    return text.replace(urlRegex, function(url) {
+
+        return  `<p class="textBox"><a href= ${url}> ${url}</a></p>
+
+      <img src = ${url} id="imgNew"><br>
+
+        `;
+
+    });
+
+}
+
+function linkAud(text) {
+
+    var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+
+    
+
+    return text.replace(urlRegex, function(url) {
+
+        return  `<p class="textBox"><a href= ${url}> ${url}</a></p>
+
+     <audio controls>
+
+         <source src = ${url} id="audNew">
+
+     </audio> <br>
+
+        `;
+
+    });
+
+}
+
+function linkVid(text) {
+
+    var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+
+    
+
+    return text.replace(urlRegex, function(url) {
+
+        return  `<p class="textBox"><a href= ${url}> ${url}</a></p>
+
+     <video controls>
+
+         <source src = ${url} id="vidNew">
+
+     </video> <br>
+
+        `;
+
+    });
+
+}
+
+function linkWeb(text) {
+
+    var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+
+    
+
+    return text.replace(urlRegex, function(url) {
+
+        return  `<p class="textBox"><a href= ${url}> ${url}</a></p>
+
+      <iframe src = ${url} id="ifrNew"></iframe><br>
+
+        `;
+
+    });
+
+}
+
+      
+
+        </script>
+
+    </body>
+
+</html>
